@@ -7,21 +7,18 @@ window.onload = () => {
   var boundaries = document.querySelectorAll(".boundary");
   var game = document.getElementById("game");
   var started = false;
-  var ended = true;
   var statusOfTheGame = document.getElementById("status");
 
   //https://stackoverflow.com/questions/8318591/javascript-addeventlistener-using-to-create-a-mouseover-effect
   //https://www.w3schools.com/jsref/event_onmouseover.asp
   start.addEventListener("mouseover", function () {
     started = true;
-    ended = false;
     lost = false;
     statusOfTheGame.innerHTML = "Started ! Let's win for Taha !!!";
   });
 
   end.addEventListener("mouseover", function () {
     if (started && !lost) {
-      ended = true;
       started = false;
       statusOfTheGame.innerHTML = "You win !";
     }
@@ -30,16 +27,16 @@ window.onload = () => {
   boundaries.forEach((boundary) => {
     boundary.addEventListener("mouseover", function () {
       if (started && !lost) {
-        ended = true;
         lost = true;
         statusOfTheGame.innerHTML = "You lost !";
       }
     });
   });
 
+  //https://www.w3schools.com/jsref/event_onmouseleave.asp
+  //https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseleave_event
   game.addEventListener("mouseleave", function () {
     if (started && !lost) {
-      ended = true;
       lost = true;
       statusOfTheGame.innerHTML = "CHEATERRRRRR";
     }
