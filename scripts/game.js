@@ -20,7 +20,7 @@ window.onload = () => {
   });
 
   end.addEventListener("mouseover", function () {
-    if (!lost) {
+    if (started && !lost) {
       ended = true;
       started = false;
       statusOfTheGame.innerHTML = "You win !";
@@ -29,7 +29,7 @@ window.onload = () => {
 
   boundaries.forEach((boundary) => {
     boundary.addEventListener("mouseover", function () {
-      if (started) {
+      if (started && !lost) {
         ended = true;
         lost = true;
         statusOfTheGame.innerHTML = "You lost !";
@@ -38,7 +38,7 @@ window.onload = () => {
   });
 
   game.addEventListener("mouseleave", function () {
-    if (started) {
+    if (started && !lost) {
       ended = true;
       lost = true;
       statusOfTheGame.innerHTML = "CHEATERRRRRR";
