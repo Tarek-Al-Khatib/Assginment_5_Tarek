@@ -5,7 +5,7 @@ window.onload = () => {
   var end = document.getElementById("end");
   var lost = false;
   var boundaries = document.querySelectorAll(".boundary");
-
+  var game = document.getElementById("game");
   var started = false;
   var ended = true;
   var statusOfTheGame = document.getElementById("status");
@@ -35,5 +35,13 @@ window.onload = () => {
         statusOfTheGame.innerHTML = "You lost !";
       }
     });
+  });
+
+  game.addEventListener("mouseleave", function () {
+    if (started) {
+      ended = true;
+      lost = true;
+      statusOfTheGame.innerHTML = "CHEATERRRRRR";
+    }
   });
 };
